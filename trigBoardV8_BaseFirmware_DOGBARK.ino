@@ -17,7 +17,9 @@ void setup() {
   rtcGetTime();// so we only bark between certain hours
 
   Serial.println(getBattery(), 2);
-  if (pushLogic() && currentHour >= 22 && currentHour < 8) { //decide if push will occur or not and what message will be
+  Serial.print("Current Hour: ");
+  Serial.println(currentHour);
+  if (pushLogic() && (currentHour >= 22 || currentHour < 8)) { //decide if push will occur or not and what message will be
 
     if (!buttonWasPressed) {
       mp3.begin(9600);
