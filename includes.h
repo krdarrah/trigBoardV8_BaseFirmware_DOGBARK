@@ -14,6 +14,7 @@
 #include <SoftwareSerial.h>//connection to mp3 board
 const int ARDUINO_RX_PIN = 33; //should connect to TX of the Serial MP3 Player module
 const int ARDUINO_TX_PIN = 32; //connect to RX of the module
+const int AUDIO_ENABLE_PIN = 13;
 SoftwareSerial mp3(ARDUINO_RX_PIN, ARDUINO_TX_PIN);
 bool donePlaying = false;//so we know when done playing, then kill power to the speaker
 byte currentHour = 0;//this is the current hour from RTC

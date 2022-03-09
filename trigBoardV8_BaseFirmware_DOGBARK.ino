@@ -22,6 +22,9 @@ void setup() {
   if (pushLogic() && (currentHour >= 22 || currentHour < 8)) { //decide if push will occur or not and what message will be
 
     if (!buttonWasPressed && !timerWake) {// just motion wake
+      pinMode(AUDIO_ENABLE_PIN, OUTPUT);// turns on a P-CH MOSFET DMP3010LK3Q-13
+      digitalWrite(AUDIO_ENABLE_PIN, LOW);
+      delay(500);
       mp3.begin(9600);
       delay(500);
       sendCommand(CMD_SEL_DEV, 0, DEV_TF);
@@ -35,7 +38,7 @@ void setup() {
       Serial.println("Playing File");
       trackToPlay = 1;
       playTheTrack();
-      
+
       timestampAppend();
       if (wiFiNeeded) {
         if (connectWiFi()) {
